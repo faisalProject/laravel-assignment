@@ -365,4 +365,48 @@ class AdminController extends Controller
             ]
             ], 422);
     }
+
+    public function show_recipe_admin() {
+        $recipes = Recipe::with('user')->get();
+
+        $data = [];
+        foreach($recipes as $recipe) {
+            array_push($data, [
+                'idresep' => $recipe->idresep,
+                'judul' => $recipe->judul,
+                'status_resep' => $recipe->status_resep,
+                'user_email' => $recipe->user_email,
+                'updated_at' =>$recipe->updated_at,
+                'gambar' => url($recipe->gambar)
+            ]);
+        }
+        return response()->json($data, 200);
+    }
+
+    public function show_recipe_by_id($id) {
+        $recipe = Recipe::where('idresep', $id)->get();
+        $tools = Tool::where('resep_idresep', $id)->get();
+        $ingredients = Ingredients::where('resep_idresep', $id)->get();
+
+        $data = [];
+        foreach($recipe as $recipe) {
+            array_push($data, [
+                'idresep' => $recipe->idresep,
+                'judul' => $recipe->judul,
+                'status_resep' => $recipe->status_resep,
+                'gambar' => $recipe->gambar,
+                'cara_pembuatan' => $recipe->cara_pembuatan,
+                'video' => $recipe->video,
+                'nama' => $recipe->user->name
+            ]);
+        }
+
+        $recipeData = [
+            'recipe' => $data,
+            "tools" => $tools,
+            "ingredients" => $ingredients
+        ];
+
+        return response()->json($recipeData, 200);
+    }
 }

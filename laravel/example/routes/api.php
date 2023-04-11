@@ -45,6 +45,8 @@ Route::middleware('admin.api')->prefix('admin')->group(function() {
     Route::delete('delete-recipe/{id}', [AdminController::class, 'delete_recipe']);
     Route::get('publish/{id}', [AdminController::class, 'publish_recipe']);
     Route::get('unpublish/{id}', [AdminController::class, 'unpublish_recipe']);
+    Route::get('show-recipes', [AdminController::class, 'show_recipe_admin']);
+    Route::get('show-recipes/{id}', [AdminController::class, 'show_recipe_by_id']);
 });
 
 Route::post('register', [AuthController::class, 'register']);

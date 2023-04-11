@@ -21,6 +21,13 @@ use App\Models\Recipe;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::get('/author', function() {
+    return response()->json([
+        'nama' => 'Muhamad Agus Faisal',
+        'nim' => '21416255201178',
+        'kelas' => 'IF21B'
+    ], 200);
+});
 
 Route::middleware('admin.api')->prefix('admin')->group(function() {
     Route::get('dashboard', [AdminController::class, 'dashboard']);

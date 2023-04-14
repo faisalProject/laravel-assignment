@@ -49,7 +49,7 @@ class RecipeController extends Controller
             array_push($data, [
                 'idresep' => $recipe->idresep,
                 'judul' => $recipe->judul,
-                'gambar' => $recipe->gambar,
+                'gambar' => url($recipe->gambar),
                 'cara_pembuatan' => $recipe->cara_pembuatan,
                 'video' => $recipe->video,
                 'nama' => $recipe->user->name

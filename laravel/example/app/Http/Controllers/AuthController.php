@@ -10,7 +10,6 @@ use Firebase\JWT\JWT;
 use Helper\messageError;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class AuthController extends Controller
 {

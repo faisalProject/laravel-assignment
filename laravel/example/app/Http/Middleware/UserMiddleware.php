@@ -33,4 +33,5 @@ class UserMiddleware
             return response()->json($e->getMessage(), 400);
         }
     }
+
 }

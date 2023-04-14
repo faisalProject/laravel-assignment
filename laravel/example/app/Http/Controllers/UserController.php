@@ -54,7 +54,7 @@ class UserController extends Controller
 
         foreach(json_decode($request->alat) as $alat) {
             Tool::create([
-                'nama_alat' => $alat->nama_alat,
+                'nama' => $alat->nama_alat,
                 'keterangan' => $alat->keterangan,
                 'resep_idresep' => $recipe->id,
             ]);
